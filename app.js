@@ -3,13 +3,13 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-const port = 3000; 
+const port = 4000; 
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const uri = "mongodb+srv://levidantasgomes:53JCoLRIf8Ig2A4L@eventum.aitfa4v.mongodb.net/?retryWrites=true&w=majority&appName=Eventum";
+const uri = "mongodb+srv://levidantasgomes:53JCoLRIf8Ig2A4L@eventum.aitfa4v.mongodb.net/?retryWrites=true&w=majority&appName=Eventum&tlsAllowInvalidCertificates=true";
 let db;
 
 async function connectToDatabase() {
@@ -17,7 +17,7 @@ async function connectToDatabase() {
     try {
         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
         await client.connect();
-        db = client.db("unifor");
+        db = client.db("Eventum");
         console.log("Conectado ao MongoDB Atlas");
     } catch (error) {
         console.error("Erro ao conectar ao MongoDB", error);
